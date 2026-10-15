@@ -29,3 +29,6 @@ dist-ssr
 .env.*
 !.env.example
 artifacts/
+
+# Verified official bundled default firmware
+!public/firmware/folo-ai-passport-xiaozhi-v2.5.0.bin

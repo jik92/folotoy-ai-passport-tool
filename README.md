@@ -24,8 +24,8 @@ bun run preview # 预览构建产物
 1. 用支持数据传输的 USB 线连接 AI Passport，关闭其他占用串口的工具。
 2. 点击「连接设备」，亲自在浏览器窗口选择 USB 串口。首次授权不能静默完成；「刷新授权设备」只读取此站点已经获准访问的端口。
 3. 程序连接引导加载器（会重启设备）、识别 ESP32-C3 与物理 Flash 容量。错误芯片会拒绝连接。
-4. 建议先进入「设备备份」，读取完整 Flash 并保存 `.bin`。备份可能包含设备身份与 Wi-Fi 密码，请勿提交到仓库。
-5. 导入本地固件。**整包模式**仅用于合并镜像，地址固定 `0x0`；**分段模式**按该固件版本的 `flash_args` 填写地址，不推测分区地址。ZIP 需要先解压。
+4. 建议先展开「高级选项」，点击「备份当前设备」，读取完整 Flash 并保存 `.bin`。备份可能包含设备身份与 Wi-Fi 密码，请勿提交到仓库。
+5. 页面默认载入已校验的官方小智 AI `v2.5.0-folo.1` 固件，也可切换「本地固件」。**整包模式**仅用于合并镜像，地址固定 `0x0`；**分段模式**按该固件版本的 `flash_args` 填写地址，不推测分区地址。ZIP 需要先解压。
 6. 点击「开始刷写」，检查文件与地址，并确认覆盖范围。程序写入、校验 MD5，再尝试自动重启。自动重启失败时按 RESET 或重新上电。
 
 固件在浏览器内计算 SHA-256；写入前检查地址格式、4 KB 对齐、区域重叠、物理 Flash 容量和可识别 ESP 镜像头中的 C3 chip ID。**这些检查不能证明固件对整块电路板兼容或可信**，请自行确认来源及硬件型号。
@@ -34,13 +34,15 @@ bun run preview # 预览构建产物
 
 ## 硬件与固件
 
-[FoloToy 官方 AI Passport 项目](https://github.com/FoloToy/folo-ai-passport-xiaozhi) 描述的硬件为 ESP32-C3、8 MB Flash、240×320 ST7789 屏幕。其合并固件写入地址为 `0x0`。固件需自行从对应项目获取，本工具不内置固件，不会自动刷写。
+[FoloToy 官方 AI Passport 项目](https://github.com/FoloToy/folo-ai-passport-xiaozhi) 描述的硬件为 ESP32-C3、8 MB Flash、240×320 ST7789 屏幕。其合并固件写入地址为 `0x0`。本工具内置官方发布的 `v2.5.0-folo.1` 小智 AI 合并固件（7,616,468 bytes），从同源静态资源加载，并在浏览器校验官方 SHA-256；不会自动刷写。
+
+默认固件 SHA-256：`b51eb892c702debef613b9705e617db155aeeb7ea0e20331d44c55d2c4e21518`。发布来源：<https://github.com/FoloToy/folo-ai-passport-xiaozhi/releases/tag/v2.5.0-folo.1>。原项目 LICENSE / NOTICE 随固件保留在 `public/firmware/`。默认固件为小智 AI 版本，非 FoloToy 原厂商业服务固件。
 
 - [AI Passport 固件发布](https://github.com/FoloToy/folo-ai-passport-xiaozhi/releases)
 - [Espressif esptool-js](https://github.com/espressif/esptool-js)
 - [FoloToy 固件升级文档](https://docs.folotoy.com/zh/docs/web-tool/)
 
-页面中的工牌为 CSS 示意图。此项目为社区工具。
+页面使用 Ant Design 紧凑主题，只保留「固件刷写」菜单；备份、高级选项和日志集中在同页。此项目为社区工具。
 
 ## 部署
 
