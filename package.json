@@ -1,0 +1,37 @@
+{
+  "name": "folotoy-flasher",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "scan": "bun scripts/scan.ts",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "antd": "^6.6.6",
+    "crypto-js": "^4.2.0",
+    "esptool-js": "^0.7.0",
+    "lucide-react": "^1.57.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/crypto-js": "^4.2.2",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@types/w3c-web-serial": "^1.0.8",
+    "@vitejs/plugin-react": "^6.1.1",
+    "oxlint": "^1.81.0",
+    "prettier": "^3.9.10",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  },
+  "description": "Local-first browser firmware flasher for FoloToy AI Passport"
+}
